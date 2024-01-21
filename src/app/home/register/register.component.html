@@ -1,21 +1,30 @@
-<form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col items-center">
-  <mat-form-field class="example-full-width mt-9">
-    <mat-label>Email</mat-label>
-    <input
-      type="email"
-      matInput
-      formControlName="email"
-      placeholder="Ex. pat@example.com"
-      class="p-2 border-2 mb-3"
-    />
-    <mat-label>Senha</mat-label>
-    <input
-      type="password"
-      matInput
-      formControlName="password"
-      placeholder="Contém caracteres e números"
-      class="p-2 border-2 mb-3"
-    />
+<form
+  class="example-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col items-center"
+>
+  <mat-label>Email</mat-label>
+  <input
+    type="email"
+    matInput
+    formControlName="email"
+    placeholder="Ex. pat@example.com"
+    class="p-2 border-2 mb-3"
+  />
+  <mat-label>Senha</mat-label>
+  <input
+    type="password"
+    matInput
+    formControlName="password"
+    placeholder="Contém caracteres e números"
+    class="p-2 border-2 mb-3"
+  />
+  <mat-radio-group aria-label="Select an option" formControlName="typeAccount">
+    <mat-radio-button value="client">Cliente</mat-radio-button>
+    <mat-radio-button value="colaborator">Colaborador</mat-radio-button>
+  </mat-radio-group>
+  <div *ngIf="loginForm.value.typeAccount == 'client'">
     <mat-label>Nome Completo</mat-label>
     <input
       type="text"
@@ -24,6 +33,18 @@
       placeholder="Nome Completo"
       class="p-2 border-2 mb-3"
     />
-  </mat-form-field>
+  </div>
+  <div *ngIf="loginForm.value.typeAccount == 'colaborator'">
+    <mat-label>Nome da empresa</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="nameCompany"
+      placeholder="Nome da empresa"
+      class="p-2 border-2 mb-3"
+    />
+    <mat-label>Logo da empresa</mat-label>
+    <input type="file" (change)="onFileChangeLogo($event)">
+  </div>
   <button mat-raised-button type="submit">Registrar</button>
 </form>

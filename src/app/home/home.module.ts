@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MainComponent } from './main/main.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 
@@ -23,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
     MatMenuModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatRadioModule,
   ],
   exports:[
     HomeComponent,

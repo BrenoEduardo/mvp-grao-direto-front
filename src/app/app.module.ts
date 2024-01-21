@@ -8,11 +8,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskModule } from 'ngx-mask';
+import {AngularFireModule} from '@angular/fire/compat'
+import {AngularFireStorageModule} from '@angular/fire/compat/storage'
+import { enviroment } from 'src/enviroments/enviroment';
+import { ColaboratorComponent } from './colaborator/colaborator.component';
+import { ClientComponent } from './client/client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ColaboratorComponent,
+    ClientComponent,
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxMaskModule.forRoot(),
+    AngularFireModule.initializeApp(enviroment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
