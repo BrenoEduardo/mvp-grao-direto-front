@@ -1,0 +1,29 @@
+<form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col items-center">
+  <mat-form-field class="example-full-width mt-9">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="email"
+      placeholder="Ex. pat@example.com"
+      class="p-2 border-2 mb-3"
+    />
+    <mat-label>Senha</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="password"
+      placeholder="Contém caracteres e números"
+      class="p-2 border-2 mb-3"
+    />
+    <mat-label>Nome Completo</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="name"
+      placeholder="Nome Completo"
+      class="p-2 border-2 mb-3"
+    />
+  </mat-form-field>
+  <button mat-raised-button type="submit">Registrar</button>
+</form>

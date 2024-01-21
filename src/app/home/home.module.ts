@@ -7,16 +7,22 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MainComponent } from './main/main.component';
+import { ModalLoginComponent } from './modal-login/modal-login.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, NavbarComponent, MainComponent],
+  declarations: [HomeComponent, NavbarComponent, MainComponent, ModalLoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   exports:[
     HomeComponent,
