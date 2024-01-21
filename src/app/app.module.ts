@@ -8,18 +8,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
 import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireStorageModule} from '@angular/fire/compat/storage'
 import { enviroment } from 'src/enviroments/enviroment';
 import { ColaboratorComponent } from './colaborator/colaborator.component';
 import { ClientComponent } from './client/client.component';
+import { TokenInterceptor } from 'src/core/interceptors/token.interceptor';
+import { ColaboratorModule } from './colaborator/colaborator.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ColaboratorComponent,
     ClientComponent,
   ],
   imports: [
@@ -33,9 +34,15 @@ import { ClientComponent } from './client/client.component';
     HttpClientModule,
     NgxMaskModule.forRoot(),
     AngularFireModule.initializeApp(enviroment.firebaseConfig),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ColaboratorModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

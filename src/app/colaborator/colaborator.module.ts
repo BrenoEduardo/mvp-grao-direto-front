@@ -1,24 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NgxMaskModule } from 'ngx-mask';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
-import { MainComponent } from './main/main.component';
-import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import { RegisterComponent } from './register/register.component';
-import { NgxMaskModule } from 'ngx-mask';
-
-
+import { ColaboratorComponent } from './colaborator.component';
+import { ColaboratorProductsComponent } from './colaborator-products/colaborator-products.component';
+import { ColaboratorModalCreateProductComponent } from './colaborator-modal-create-product/colaborator-modal-create-product.component';
 @NgModule({
-  declarations: [HomeComponent, NavbarComponent, MainComponent, ModalLoginComponent, RegisterComponent],
+  declarations: [ColaboratorComponent, ColaboratorProductsComponent, ColaboratorModalCreateProductComponent],
   imports: [
     CommonModule,
+    NgxMaskModule.forChild(),
     MatSidenavModule,
     MatIconModule,
     MatButtonModule,
@@ -26,11 +23,6 @@ import { NgxMaskModule } from 'ngx-mask';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatRadioModule,
-    NgxMaskModule.forChild()
-  ],
-  exports:[
-    HomeComponent,
-    NavbarComponent,
   ]
 })
-export class HomeModule { }
+export class ColaboratorModule { }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from 'src/core/service/login.service';
+import { LoginService } from 'src/core/service/login/login.service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
@@ -94,9 +94,9 @@ export class RegisterComponent {
     console.log(this.loginForm);
     if (this.loginForm.invalid) return;
     this.loginService.register(this.loginForm.value).subscribe((res: any) => {
-      const decoded = jwtDecode(res.data);
+      localStorage.setItem('token', res.data)
       this.dialogRef.close()
-      this.router.navigate(['/colaborator'], {queryParams: {data:decoded}})
+      this.router.navigate(['/colaborator'])
     });
   }
 }

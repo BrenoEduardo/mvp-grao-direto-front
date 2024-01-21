@@ -1,0 +1,36 @@
+<button mat-raised-button type="submit" (click)="openModalCreateProduct()">Adicionar produto <mat-icon>add</mat-icon></button>
+<mat-icon>person</mat-icon>
+
+<h2>Produtos</h2>
+<div
+  *ngFor="let product of products"
+  class="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-md m-4"
+>
+  <div class="flex items-center">
+    <div class="flex-shrink-0">
+      <img
+        [src]="product.productImage"
+        alt="{{ product.productName }}"
+        class="w-20 h-16 object-cover mx-auto"
+      />
+    </div>
+    <div class="flex-grow p-4 flex justify-between items-center">
+      <div class="pl-3">
+        <div class="text-xl font-medium text-gray-800">
+          {{ product.productName }}
+        </div>
+        <div class="text-lg text-gray-600">
+          R$ {{ product.productPrice | number : "1.2-2" }}
+        </div>
+      </div>
+      <div class="flex flex-col mt-4 space-y-2">
+        <button mat-icon-button class="text-gray-500">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button class="!text-red-500">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

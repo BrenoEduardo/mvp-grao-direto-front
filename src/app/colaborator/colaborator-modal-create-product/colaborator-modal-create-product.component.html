@@ -1,0 +1,28 @@
+<form
+  class="example-form"
+  [formGroup]="productsForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col items-center"
+>
+  <mat-label>Nome produto</mat-label>
+  <input
+    type="text"
+    matInput
+    formControlName="productName"
+    placeholder="Banana"
+    class="p-2 border-2 mb-3"
+  />
+  <mat-label>Preço produto</mat-label>
+  <input
+    type="number"
+    matInput
+    formControlName="productPrice"
+    placeholder="Contém caracteres e números"
+    class="p-2 border-2 mb-3"
+    thousandSeparator="."
+    decimalSeparator=","
+  />
+  <mat-label>Imagem do produto</mat-label>
+  <input type="file" (change)="onFileChangeImage($event)" />
+  <button mat-raised-button type="submit">Registrar produto</button>
+</form>

@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { ColaboratorComponent } from './colaborator/colaborator.component';
 import { HomeComponent } from './home/home.component';
 import { ClientComponent } from './client/client.component';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'colaborator', component: ColaboratorComponent },
-  { path: 'client', component: ClientComponent },
+  { path: 'colaborator', component: ColaboratorComponent, canActivate:[AuthGuard] },
+  { path: 'client', component: ClientComponent, canActivate:[AuthGuard] },
 
 ];
 

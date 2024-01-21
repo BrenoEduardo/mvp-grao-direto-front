@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { LoginService } from 'src/core/service/login.service';
+import { LoginService } from 'src/core/service/login/login.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
@@ -35,7 +35,7 @@ export class ModalLoginComponent {
   }
   onSubmit(): void {
     this.loginService.login(this.loginForm.value).subscribe((res: any) => {
-      console.log(res, 'resp');
+      localStorage.setItem('token', res.data)
       const decoded = jwtDecode(res.data);
       this.dialogRef.close();
       this.router.navigate(['/client'], {queryParams: {data:decoded}})
