@@ -1,0 +1,40 @@
+<div class="p-4">
+  <!-- Top Bar with User and Menu Icons -->
+  <div class="flex justify-between items-center mb-4">
+    <div>
+      <mat-icon class="cursor-pointer" aria-label="menu">menu</mat-icon>
+    </div>
+    <div>
+      <mat-icon [matMenuTriggerFor]="contextMenu" class="cursor-pointer">person</mat-icon>
+
+      <!-- Menu de contexto -->
+      <mat-menu #contextMenu="matMenu">
+        <button mat-menu-item (click)="editarPerfil()">Editar Perfil</button>
+        <button mat-menu-item (click)="sair()">Sair</button>
+      </mat-menu>    </div>
+  </div>
+
+  <div class="text-center mb-4">
+    <mat-form-field class="example-form-field">
+      <mat-label>Pesquisar</mat-label>
+      <input matInput type="search" (keyup)="filterCompanies($event)"/>
+      <button matSuffix mat-icon-button aria-label="search">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <!-- Cards para cada empresa -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div *ngFor="let company of companies" (click)="openDetailsCompany(company)">
+      <div class="bg-white p-4 rounded-md shadow-md">
+        <img
+          [src]="company.logoCompany"
+          alt="{{ company.nameCompany }}"
+          class="w-20 h-16 object-cover mx-auto mb-2"
+        />
+        <div class="text-center font-bold">{{ company.nameCompany }}</div>
+      </div>
+    </div>
+  </div>
+</div>

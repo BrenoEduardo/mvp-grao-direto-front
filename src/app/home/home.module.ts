@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
 import { MainComponent } from './main/main.component';
 import { ModalLoginComponent } from './modal-login/modal-login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -24,6 +25,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MatButtonModule,
     MatMenuModule,
     MatFormFieldModule,
+    MatInputModule,
     ReactiveFormsModule,
     MatRadioModule,
     NgxMaskModule.forChild()

@@ -4,7 +4,15 @@
   (ngSubmit)="onSubmit()"
   class="flex flex-col items-center"
 >
-  <mat-label>Nome produto</mat-label>
+  <mat-label>Tipo do produto</mat-label>
+  <mat-form-field>
+    <mat-label>Selecione uma opção</mat-label>
+    <mat-select formControlName="productType">
+      <mat-option value="Prato">Prato</mat-option>
+      <mat-option value="Bebida">Bebida</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-label>Nome do produto</mat-label>
   <input
     type="text"
     matInput
@@ -12,7 +20,7 @@
     placeholder="Banana"
     class="p-2 border-2 mb-3"
   />
-  <mat-label>Preço produto</mat-label>
+  <mat-label>Preço do produto</mat-label>
   <input
     type="number"
     matInput
@@ -21,6 +29,14 @@
     class="p-2 border-2 mb-3"
     thousandSeparator="."
     decimalSeparator=","
+  />
+  <mat-label>Descrição do  produto</mat-label>
+  <input
+    type="text"
+    matInput
+    formControlName="productDescription"
+    placeholder="Descreva o produto"
+    class="p-2 border-2 mb-3"
   />
   <mat-label>Imagem do produto</mat-label>
   <input type="file" (change)="onFileChangeImage($event)" />

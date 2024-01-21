@@ -63,13 +63,11 @@ export class RegisterComponent {
   }
   async onFileChangeImageProduct(event: any) {
     const file = event.target.files[0];
-    console.log(file, 'file');
     if (file) {
       const path = `yt/${file.name}`;
       const uploadTask = await this.fireStorage.upload(path, file);
       const url = await uploadTask.ref.getDownloadURL();
       this.productCompany.get('imageProduct').setValue(url);
-      console.log(this.loginForm.value);
     }
   }
 
@@ -91,12 +89,12 @@ export class RegisterComponent {
     });
   }
   onSubmit(): void {
-    console.log(this.loginForm);
     if (this.loginForm.invalid) return;
     this.loginService.register(this.loginForm.value).subscribe((res: any) => {
       localStorage.setItem('token', res.data)
+      const decoded: any = jwtDecode(res.data);
+      decoded.typeAccount == 'client'? this.router.navigate(['/client']) :  this.router.navigate(['/colaborator'])
       this.dialogRef.close()
-      this.router.navigate(['/colaborator'])
     });
   }
 }

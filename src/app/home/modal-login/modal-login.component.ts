@@ -36,10 +36,9 @@ export class ModalLoginComponent {
   onSubmit(): void {
     this.loginService.login(this.loginForm.value).subscribe((res: any) => {
       localStorage.setItem('token', res.data)
-      const decoded = jwtDecode(res.data);
+      const decoded: any = jwtDecode(res.data);
+      decoded.typeAccount == 'client'? this.router.navigate(['/client']) :  this.router.navigate(['/colaborator'])
       this.dialogRef.close();
-      this.router.navigate(['/client'], {queryParams: {data:decoded}})
-
     });
   }
 }

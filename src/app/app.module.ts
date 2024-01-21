@@ -14,14 +14,13 @@ import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireStorageModule} from '@angular/fire/compat/storage'
 import { enviroment } from 'src/enviroments/enviroment';
 import { ColaboratorComponent } from './colaborator/colaborator.component';
-import { ClientComponent } from './client/client.component';
 import { TokenInterceptor } from 'src/core/interceptors/token.interceptor';
 import { ColaboratorModule } from './colaborator/colaborator.module';
+import { ClientModule } from './cliente/client.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClientComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +34,8 @@ import { ColaboratorModule } from './colaborator/colaborator.module';
     NgxMaskModule.forRoot(),
     AngularFireModule.initializeApp(enviroment.firebaseConfig),
     AngularFireStorageModule,
-    ColaboratorModule
+    ColaboratorModule,
+    ClientModule
   ],
   providers: [
     {

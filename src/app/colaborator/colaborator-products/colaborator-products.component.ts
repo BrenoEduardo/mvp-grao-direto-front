@@ -5,6 +5,8 @@ import { jwtModel } from 'src/core/interface/jwt.model';
 import { ProductsModel } from 'src/core/interface/products.model';
 import { ColaboratorService } from 'src/core/service/colaborator/colaborator.service';
 import { ColaboratorModalCreateProductComponent } from '../colaborator-modal-create-product/colaborator-modal-create-product.component';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-colaborator-products',
@@ -21,6 +23,7 @@ export class ColaboratorProductsComponent {
   constructor(
     private colaboratorService: ColaboratorService,
     private dialog: MatDialog,
+    private router: Router,
   ) {
     this.jwtToken = localStorage.getItem('token')
     this.decoded = jwtDecode(this.jwtToken);
@@ -28,10 +31,21 @@ export class ColaboratorProductsComponent {
   ngOnInit(): void {
     this.getProductsById()
   }
+  openMenu(trigger: MatMenuTrigger): void {
+    trigger.openMenu();
+  }
+
+  editarPerfil(): void {
+    // Implemente a lógica para editar o perfil aqui
+  }
+
+  sair(): void {
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
   getProductsById(){
     this.colaboratorService.getProductsById(this.decoded.id).subscribe((res: any)=>{
       this.products = res.data
-      console.log(this.products, 'resp')
     })
   }
   openModalCreateProduct(){

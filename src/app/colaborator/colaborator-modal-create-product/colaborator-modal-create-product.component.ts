@@ -34,8 +34,10 @@ export class ColaboratorModalCreateProductComponent {
   initForm(): void {
     this.productsForm = this.fb.group({
       userId: [this.decoded.id],
+      productType: ['',[Validators.required]],
       productName: ['', [Validators.required, Validators.minLength(2)]],
       productPrice: [[Validators.required, Validators.minLength(2)]],
+      productDescription: ['',[Validators.required, Validators.minLength(2)]],
       productImage: [],
     });
   }
@@ -50,11 +52,9 @@ export class ColaboratorModalCreateProductComponent {
     const path = `yt/${this.file.name}`;
     const uploadTask = await this.fireStorage.upload(path, this.file);
     const url = await uploadTask.ref.getDownloadURL();
-    console.log(url, 'url')
     this.productsForm.get('productImage').setValue(url);
   }
   async onSubmit(){
-    console.log(this.productsForm.value)
     if (this.productsForm.invalid) return;
     await this.uploadImage();
     this.colaboratorService.sendProduct(this.productsForm.value).subscribe((res: any)=>{

@@ -1,5 +1,17 @@
-<button mat-raised-button type="submit" (click)="openModalCreateProduct()">Adicionar produto <mat-icon>add</mat-icon></button>
-<mat-icon>person</mat-icon>
+<div class="flex justify-around p-3">
+  <button mat-raised-button type="submit" (click)="openModalCreateProduct()">
+    Adicionar produto <mat-icon>add</mat-icon>
+  </button>
+
+  <!-- Ícone de pessoa com menu de contexto -->
+  <mat-icon [matMenuTriggerFor]="contextMenu" class="cursor-pointer">person</mat-icon>
+
+  <!-- Menu de contexto -->
+  <mat-menu #contextMenu="matMenu">
+    <button mat-menu-item (click)="editarPerfil()">Editar Perfil</button>
+    <button mat-menu-item (click)="sair()">Sair</button>
+  </mat-menu>
+</div>
 
 <h2>Produtos</h2>
 <div
@@ -20,7 +32,7 @@
           {{ product.productName }}
         </div>
         <div class="text-lg text-gray-600">
-          R$ {{ product.productPrice | number : "1.2-2" }}
+          {{ product.productPrice | currency : "BRL" }}
         </div>
       </div>
       <div class="flex flex-col mt-4 space-y-2">
