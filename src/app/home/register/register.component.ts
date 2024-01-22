@@ -53,7 +53,7 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       typeAccount: ['', [Validators.required]],
-      name: ['', [Validators.required,Validators.minLength(2)]],
+      name: ['', [Validators.required, Validators.minLength(2)]],
       nameCompany: ['', [Validators.required, Validators.minLength(3)]],
       phoneCompany: ['', [Validators.required, Validators.minLength(10)]],
       adressCompany: ['', [Validators.required, Validators.minLength(3)]],
@@ -69,14 +69,22 @@ export class RegisterComponent {
       .valueChanges.subscribe((typeAccount: string) => {
         const nameCompanyControl = this.loginForm.get('nameCompany');
         const nameClientControl = this.loginForm.get('name');
+        const phoneCompany = this.loginForm.get('phoneCompany');
+        const adressCompany = this.loginForm.get('adressCompany');
 
         if (typeAccount === 'colaborator') {
           nameClientControl.clearValidators();
           nameCompanyControl.setValidators([Validators.required]);
+          adressCompany.setValidators([Validators.required]);
+          phoneCompany.setValidators([Validators.required]);
         } else if (typeAccount === 'client') {
           nameCompanyControl.clearValidators();
+          phoneCompany.clearValidators();
+          adressCompany.clearValidators();
           nameClientControl.setValidators([Validators.required]);
         }
+        adressCompany.updateValueAndValidity();
+        phoneCompany.updateValueAndValidity();
         nameClientControl.updateValueAndValidity();
         nameCompanyControl.updateValueAndValidity();
       });
@@ -105,9 +113,13 @@ export class RegisterComponent {
   }
   async onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm, 'dsa')
+    console.log(this.loginForm);
+    console.log(this.loginForm, 'dsa');
+
     if (this.loginForm.invalid) return;
-    await this.uploadImage();
+
+    if (this.file) await this.uploadImage();
+
     this.loginService.register(this.loginForm.value).subscribe((res: any) => {
       localStorage.setItem('token', res.data);
       const decoded: any = jwtDecode(res.data);

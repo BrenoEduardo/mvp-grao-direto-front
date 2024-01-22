@@ -4,6 +4,8 @@ export interface CompanyModel {
   email: string;
   typeAccount: string;
   nameCompany: string;
+  adressCompany: string;
+  phoneCompany: string;
   logoCompany: string;
   createdAt: Date;
 }
