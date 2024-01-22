@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ClientComponent } from './client.component';
 import { CompanyDetailsComponent } from './company-details/company-details.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterLink } from '@angular/router';
 import { ClienteShowProductsComponent } from './cliente-show-products/cliente-show-products.component';
 import { ScrollableDirective } from '../../core/directives/scrol.directive';
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatMenuModule,
     RouterLink,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class ClientModule { }
