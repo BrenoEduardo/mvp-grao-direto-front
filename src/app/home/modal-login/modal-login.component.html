@@ -1,21 +1,62 @@
-<form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col items-center" *ngIf="!Isregister">
+<div class="flex justify-end pr-2 pt-2" (click)="closedModel()" *ngIf="!Isregister">
+  <mat-icon class="opacity-50">close</mat-icon>
+</div>
+<form
+  class="example-form"
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  class="flex flex-col items-center p-9"
+  *ngIf="!Isregister"
+>
+  <div class="flex flex-col items-start w-full">
     <mat-label>Email</mat-label>
     <input
       type="email"
       matInput
       formControlName="email"
       placeholder="Ex. pat@example.com"
-      class="p-2 border-2 mb-3"
+      class="p-2 border-2 w-full"
     />
-    <mat-label>Senha</mat-label>
+    <mat-error *ngIf="loginForm.controls.email.hasError('email') && submitted"
+      >Email invalido</mat-error
+    >
+    <mat-error
+      *ngIf="loginForm.controls.email.hasError('required') && submitted"
+      >Email obrigatório</mat-error
+    >
+    <mat-label class="pt-3">Senha</mat-label>
     <input
       type="password"
       matInput
       formControlName="password"
       placeholder="Contém caracteres e números"
-      class="p-2 border-2 mb-3"
+      class="p-2 border-2 w-full"
     />
-  <button mat-raised-button type="submit">Entrar</button>
-  <button mat-raised-button (click)="register()">Registrar</button>
+    <mat-error
+      *ngIf="loginForm.controls.password.hasError('required') && submitted"
+      >Senha obrigatória</mat-error
+    >
+    <mat-error
+      *ngIf="loginForm.controls.password.hasError('minlength') && submitted"
+      >Senha invalida</mat-error
+    >
+    <mat-error class="p-2" *ngIf="errorLogin"
+      >Usuário ou senha invalidos</mat-error
+    >
+  </div>
+  <div class="flex justify-evenly w-full pt-3">
+    <button
+      mat-raised-button
+      type="submit"
+      class="w-full !bg-yellow-600 !text-white"
+    >
+      Entrar
+    </button>
+  </div>
+  <div class="pt-6">
+    <p (click)="register()">
+      Não tenho uma conta? <span class="text-yellow-600"> Crie uma</span>
+    </p>
+  </div>
 </form>
 <app-register *ngIf="Isregister"></app-register>

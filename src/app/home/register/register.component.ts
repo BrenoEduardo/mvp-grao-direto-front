@@ -5,7 +5,7 @@ import { LoginService } from 'src/core/service/login/login.service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,13 +14,33 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class RegisterComponent {
   public loginForm: any;
   public productCompany: any;
+  public mask = [
+    '(',
+    /[1-9]/,
+    /\d/,
+    ')',
+    ' ',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    /\d/,
+    /\d/,
+  ];
+  public file!: File;
+  public submitted: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private fireStorage: AngularFireStorage,
     private router: Router,
-    private dialogRef: MatDialogRef<ModalLoginComponent>
+    private dialogRef: MatDialogRef<ModalLoginComponent>,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -33,32 +53,32 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       typeAccount: ['', [Validators.required]],
-      name: ['', [Validators.minLength(10)]],
-      nameCompany: ['', [Validators.minLength(3)]],
-      logoCompany: ['', [Validators.minLength(3)]],
+      name: ['', [Validators.required,Validators.minLength(2)]],
+      nameCompany: ['', [Validators.required, Validators.minLength(3)]],
+      phoneCompany: ['', [Validators.required, Validators.minLength(10)]],
+      adressCompany: ['', [Validators.required, Validators.minLength(3)]],
+      logoCompany: [],
     });
   }
-
+  closedModel() {
+    this.dialogRef.close();
+  }
   watchTypeAccountChanges(): void {
     this.loginForm
       .get('typeAccount')
       .valueChanges.subscribe((typeAccount: string) => {
         const nameCompanyControl = this.loginForm.get('nameCompany');
-        const logoCompanyControl = this.loginForm.get('logoCompany');
         const nameClientControl = this.loginForm.get('name');
 
         if (typeAccount === 'colaborator') {
           nameClientControl.clearValidators();
           nameCompanyControl.setValidators([Validators.required]);
-          logoCompanyControl.setValidators([Validators.required]);
         } else if (typeAccount === 'client') {
           nameCompanyControl.clearValidators();
-          logoCompanyControl.clearValidators();
           nameClientControl.setValidators([Validators.required]);
         }
         nameClientControl.updateValueAndValidity();
         nameCompanyControl.updateValueAndValidity();
-        logoCompanyControl.updateValueAndValidity();
       });
   }
   async onFileChangeImageProduct(event: any) {
@@ -74,27 +94,27 @@ export class RegisterComponent {
   async onFileChangeLogo(event: any) {
     const file = event.target.files[0];
     if (file) {
-      const path = `yt/${file.name}`;
-      const uploadTask = await this.fireStorage.upload(path, file);
-      const url = await uploadTask.ref.getDownloadURL();
-      this.loginForm.get('logoCompany').setValue(url);
+      this.file = file;
     }
   }
-
-  createProductFormGroup(): any {
-    return this.fb.group({
-      nameProduct: ['', [Validators.required, Validators.minLength(5)]],
-      priceProduct: ['', [Validators.required, Validators.minLength(2)]],
-      imageProduct: ['', [Validators.required]],
-    });
+  async uploadImage() {
+    const path = `yt/${this.file.name}`;
+    const uploadTask = await this.fireStorage.upload(path, this.file);
+    const url = await uploadTask.ref.getDownloadURL();
+    this.loginForm.get('logoCompany').setValue(url);
   }
-  onSubmit(): void {
+  async onSubmit() {
+    this.submitted = true;
+    console.log(this.loginForm, 'dsa')
     if (this.loginForm.invalid) return;
+    await this.uploadImage();
     this.loginService.register(this.loginForm.value).subscribe((res: any) => {
-      localStorage.setItem('token', res.data)
+      localStorage.setItem('token', res.data);
       const decoded: any = jwtDecode(res.data);
-      decoded.typeAccount == 'client'? this.router.navigate(['/client']) :  this.router.navigate(['/colaborator'])
-      this.dialogRef.close()
+      decoded.typeAccount == 'client'
+        ? this.router.navigate(['/client'])
+        : this.router.navigate(['/colaborator']);
+      this.dialogRef.close();
     });
   }
 }

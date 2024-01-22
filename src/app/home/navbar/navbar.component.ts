@@ -9,12 +9,7 @@ import { ModalLoginComponent } from '../modal-login/modal-login.component';
 })
 export class NavbarComponent {
 
-  constructor(private dialog: MatDialog){}
+  constructor(){}
 
-  openModalLogin(){
-    this.dialog.open(ModalLoginComponent, {
-      width:'300px',
-      height: '300px'
-    })
-  }
+
 }

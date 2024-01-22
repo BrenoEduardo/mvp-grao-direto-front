@@ -13,11 +13,13 @@ import { jwtDecode } from 'jwt-decode';
 export class ModalLoginComponent {
   public loginForm: any;
   public Isregister: boolean = false;
+  public submitted: boolean = false;
+  public errorLogin: boolean = false
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private dialogRef: MatDialogRef<ModalLoginComponent>,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,15 +32,26 @@ export class ModalLoginComponent {
       password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
+  closedModel() {
+    this.dialogRef.close();
+  }
   register(): void {
     this.Isregister = true;
   }
   onSubmit(): void {
-    this.loginService.login(this.loginForm.value).subscribe((res: any) => {
-      localStorage.setItem('token', res.data)
-      const decoded: any = jwtDecode(res.data);
-      decoded.typeAccount == 'client'? this.router.navigate(['/client']) :  this.router.navigate(['/colaborator'])
-      this.dialogRef.close();
+    this.submitted = true;
+    if (this.loginForm.invalid) return;
+    this.loginService.login(this.loginForm.value).subscribe({
+      next: (res: any) => {
+        localStorage.setItem('token', res.data);
+        const decoded: any = jwtDecode(res.data);
+        decoded.typeAccount == 'client'
+          ? this.router.navigate(['/client'])
+          : this.router.navigate(['/colaborator']);
+        this.dialogRef.close();
+      },error: (error: any)=>{
+        this.errorLogin = true
+      }
     });
   }
 }

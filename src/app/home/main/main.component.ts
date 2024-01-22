@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalLoginComponent } from '../modal-login/modal-login.component';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-main',
@@ -6,5 +9,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-
+  constructor(
+    private dialog: MatDialog
+  ) {}
+  openModalLogin(){
+    this.dialog.open(ModalLoginComponent, {
+      width:'300px',
+    })
+  }
+  openModalRegister(){
+    this.dialog.open(RegisterComponent, {
+      width:'300px',
+    })
+  }
 }

@@ -13,8 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { NgxMaskModule } from 'ngx-mask';
-
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [HomeComponent, NavbarComponent, MainComponent, ModalLoginComponent, RegisterComponent],
@@ -28,7 +27,7 @@ import { NgxMaskModule } from 'ngx-mask';
     MatInputModule,
     ReactiveFormsModule,
     MatRadioModule,
-    NgxMaskModule.forChild()
+    TextMaskModule
   ],
   exports:[
     HomeComponent,
