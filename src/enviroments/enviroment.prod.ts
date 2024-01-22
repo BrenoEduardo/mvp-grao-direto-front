@@ -1,5 +1,5 @@
 export const enviroment = {
-  apiUrl: 'http://localhost:3000/',
+  apiUrl: 'https://grao-direto-back.onrender.com/',
   firebaseConfig: {
     apiKey: 'AIzaSyCZWaHo_BlYl_3ibSSkDuhQBxXQ9GFIDW4',
     authDomain: 'graoa-direto.firebaseapp.com',

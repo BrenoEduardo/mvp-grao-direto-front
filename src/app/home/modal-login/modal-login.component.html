@@ -1,4 +1,8 @@
-<div class="flex justify-end pr-2 pt-2" (click)="closedModel()" *ngIf="!Isregister">
+<div
+  class="flex justify-end pr-2 pt-2"
+  (click)="closedModel()"
+  *ngIf="!Isregister"
+>
   <mat-icon class="opacity-50 cursor-pointer">close</mat-icon>
 </div>
 <form
@@ -9,7 +13,7 @@
   *ngIf="!Isregister"
 >
   <div class="flex flex-col items-start w-full">
-    <mat-label>Email</mat-label>
+    <mat-label>Email*</mat-label>
     <input
       type="email"
       matInput
@@ -17,6 +21,7 @@
       placeholder="Ex. pat@example.com"
       class="p-2 border-2 w-full"
     />
+    <div class="min-h-5">
     <mat-error *ngIf="loginForm.controls.email.hasError('email') && submitted"
       >Email invalido</mat-error
     >
@@ -24,7 +29,8 @@
       *ngIf="loginForm.controls.email.hasError('required') && submitted"
       >Email obrigatório</mat-error
     >
-    <mat-label class="pt-3">Senha</mat-label>
+  </div>
+    <mat-label class="pt-3">Senha*</mat-label>
     <input
       type="password"
       matInput
@@ -32,24 +38,27 @@
       placeholder="Contém caracteres e números"
       class="p-2 border-2 w-full"
     />
-    <mat-error
-      *ngIf="loginForm.controls.password.hasError('required') && submitted"
-      >Senha obrigatória</mat-error
-    >
-    <mat-error
-      *ngIf="loginForm.controls.password.hasError('minlength') && submitted"
-      >Senha invalida</mat-error
-    >
-    <mat-error class="p-2" *ngIf="errorLogin"
-      >Usuário ou senha invalidos</mat-error
-    >
+    <div class="min-h-5">
+      <mat-error
+        *ngIf="loginForm.controls.password.hasError('required') && submitted"
+        >Senha obrigatória</mat-error
+      >
+      <mat-error
+        *ngIf="loginForm.controls.password.hasError('minlength') && submitted"
+        >Senha invalida</mat-error
+      >
+      <mat-error class="pt-2" *ngIf="errorLogin"
+        >Usuário ou senha invalidos</mat-error
+      >
+    </div>
   </div>
-  <div class="flex justify-evenly w-full pt-3">
+  <div class="flex justify-evenly w-full pt-8">
     <button
       mat-raised-button
       type="submit"
       class="w-full !bg-yellow-600 !text-white"
-      [class.spinner]="loading" [disabled]="loading"
+      [class.spinner]="loading"
+      [disabled]="loading"
     >
       Entrar
     </button>

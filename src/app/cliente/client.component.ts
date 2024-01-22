@@ -1,10 +1,12 @@
-import { CompanyModel } from 'src/core/interface/companies.model';
+import { UserModel } from 'src/core/interface/companies.model';
 import { ClienteService } from '../../core/service/cliente/cliente.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ClienteEditProfileComponent } from './cliente-edit-profile/cliente-edit-profile.component';
 
 @Component({
   selector: 'app-client',
@@ -12,10 +14,10 @@ import { Subject } from 'rxjs';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent {
-  public companies!: CompanyModel[];
+  public companies!: UserModel[];
   private searchTerms = new Subject<any>();
 
-  constructor(private ClienteService: ClienteService, private router: Router) {}
+  constructor(private ClienteService: ClienteService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.getAllCompanys();
@@ -42,13 +44,17 @@ export class ClientComponent {
     this.searchTerms.next(payload);
   }
 
-  editarPerfil(): void {}
+  editarPerfil(): void {
+    this.dialog.open(ClienteEditProfileComponent, {
+      width:'600px'
+    })
+  }
 
   sair(): void {
     localStorage.clear();
     this.router.navigate(['/']);
   }
-  openDetailsCompany(company: CompanyModel) {
+  openDetailsCompany(company: UserModel) {
     this.router.navigate(['/client/companyDetails'], { queryParams: company });
   }
 }

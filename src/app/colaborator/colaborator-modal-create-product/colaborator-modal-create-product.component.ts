@@ -43,7 +43,9 @@ export class ColaboratorModalCreateProductComponent {
       productImage: [],
     });
   }
-
+  closedModel(){
+    this.dialogRef.close()
+  }
   async onFileChangeImage(event: any) {
     const file = event.target.files[0];
     if (file) {

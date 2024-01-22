@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CompanyModel } from 'src/core/interface/companies.model';
+import { UserModel } from 'src/core/interface/companies.model';
 import { ProductsModel } from 'src/core/interface/products.model';
 import { ColaboratorService } from 'src/core/service/colaborator/colaborator.service';
 
@@ -10,7 +10,7 @@ import { ColaboratorService } from 'src/core/service/colaborator/colaborator.ser
   styleUrls: ['./company-details.component.scss'],
 })
 export class CompanyDetailsComponent {
-  public company!: CompanyModel;
+  public company!: UserModel;
   public productDrink: ProductsModel[] = [];
   public productFood: ProductsModel[] = [];
 
@@ -19,7 +19,7 @@ export class CompanyDetailsComponent {
     private colaboratorService: ColaboratorService
   ) {
     this.router.queryParams.subscribe((params) => {
-      this.company = params as CompanyModel;
+      this.company = params as UserModel;
     });
   }
 

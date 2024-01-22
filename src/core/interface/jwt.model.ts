@@ -1,5 +1,6 @@
 export interface jwtModel {
   id: any
-  user: string;
+  email:string;
+  name: string;
   typeAccount: string;
 }

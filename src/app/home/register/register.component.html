@@ -8,7 +8,7 @@
   class="flex flex-col items-center p-9"
 >
   <div class="flex flex-col items-start w-full">
-    <mat-label>Email</mat-label>
+    <mat-label>Email*</mat-label>
     <input
       type="email"
       matInput
@@ -23,7 +23,7 @@
       *ngIf="loginForm.controls.email.hasError('required') && submitted"
       >Email obrigatório</mat-error
     >
-    <mat-label class="pt-3">Senha</mat-label>
+    <mat-label class="pt-3">Senha*</mat-label>
     <input
       type="password"
       matInput
@@ -52,7 +52,7 @@
       >Campo obrigatório</mat-error
     >
     <div *ngIf="loginForm.value.typeAccount == 'client'" class="w-full">
-      <mat-label>Nome Completo</mat-label>
+      <mat-label>Nome Completo*</mat-label>
       <input
         type="text"
         matInput
@@ -67,7 +67,7 @@
     </div>
     <div *ngIf="loginForm.value.typeAccount == 'colaborator'" class="w-full">
       <div>
-        <mat-label>Nome da empresa</mat-label>
+        <mat-label>Nome da empresa*</mat-label>
         <input
           type="text"
           matInput
@@ -83,7 +83,7 @@
         >
       </div>
       <div class="mt-3">
-        <mat-label>Telefone da empresa</mat-label>
+        <mat-label>Telefone da empresa*</mat-label>
         <input
           type="text"
           matInput
@@ -100,7 +100,7 @@
         >
       </div>
       <div class="mt-3">
-        <mat-label>Endereço da empresa</mat-label>
+        <mat-label>Endereço da empresa*</mat-label>
         <input
           type="text"
           matInput
