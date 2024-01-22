@@ -5,7 +5,7 @@ import { LoginService } from 'src/core/service/login/login.service';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { ModalLoginComponent } from '../modal-login/modal-login.component';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -33,14 +33,15 @@ export class RegisterComponent {
   ];
   public file!: File;
   public submitted: boolean = false;
+  public loading: boolean = false;
+  public error: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
     private fireStorage: AngularFireStorage,
     private router: Router,
-    private dialogRef: MatDialogRef<ModalLoginComponent>,
-    private dialog: MatDialog
+    private dialogRef: MatDialogRef<ModalLoginComponent>
   ) {}
 
   ngOnInit(): void {
@@ -117,14 +118,20 @@ export class RegisterComponent {
     if (this.loginForm.invalid) return;
 
     if (this.file) await this.uploadImage();
-
-    this.loginService.register(this.loginForm.value).subscribe((res: any) => {
-      localStorage.setItem('token', res.data);
-      const decoded: any = jwtDecode(res.data);
-      decoded.typeAccount == 'client'
-        ? this.router.navigate(['/client'])
-        : this.router.navigate(['/colaborator']);
-      this.dialogRef.close();
+    this.loading = true;
+    this.loginService.register(this.loginForm.value).subscribe({
+      next: (res: any) => {
+        localStorage.setItem('token', res.data);
+        const decoded: any = jwtDecode(res.data);
+        decoded.typeAccount == 'client'
+          ? this.router.navigate(['/client'])
+          : this.router.navigate(['/colaborator']);
+        this.dialogRef.close();
+      },
+      error: (error: any) => {
+        this.loading = false;
+        this.error = true;
+      },
     });
   }
 }

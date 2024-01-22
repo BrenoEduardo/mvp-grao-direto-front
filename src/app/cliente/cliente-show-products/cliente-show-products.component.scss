@@ -1,6 +1,5 @@
-/* Adicione este estilo ao seu arquivo de folha de estilo CSS */
 .scroll-container {
-  max-width: 980px; /* Defina a largura máxima desejada para o contêiner */
+  max-width: 980px;
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
@@ -13,9 +12,15 @@
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
   background-color: rgba(155, 155, 155, 0.5);
 }
 
 .scroll-container::-webkit-scrollbar-track {
   background-color: transparent;
+}
+.card-image {
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
 }

@@ -2,13 +2,9 @@
   <button mat-raised-button type="submit" (click)="openModalCreateProduct()">
     Adicionar produto <mat-icon>add</mat-icon>
   </button>
-
-  <!-- Ícone de pessoa com menu de contexto -->
   <mat-icon [matMenuTriggerFor]="contextMenu" class="cursor-pointer"
     >person</mat-icon
   >
-
-  <!-- Menu de contexto -->
   <mat-menu #contextMenu="matMenu">
     <button mat-menu-item (click)="editarPerfil()">Editar Perfil</button>
     <button mat-menu-item (click)="sair()">Sair</button>
@@ -33,7 +29,7 @@
         />
       </div>
       <div class="flex-grow p-4 flex justify-between items-center">
-        <div class="pl-3">
+        <div class="pl-3 text-start">
           <div class="text-xl font-medium text-gray-800">
             {{ product.productName }}
           </div>
@@ -42,10 +38,7 @@
           </div>
         </div>
         <div class="flex flex-col mt-4 space-y-2">
-          <button mat-icon-button class="text-gray-500">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button class="!text-red-500">
+          <button mat-icon-button class="!text-red-500" (click)="deleteProduct(product)">
             <mat-icon>delete</mat-icon>
           </button>
         </div>

@@ -18,6 +18,8 @@ export class ColaboratorModalCreateProductComponent {
   public decoded!: jwtModel;
   public file!: File;
   public products!: ProductsModel[];
+  public loading: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private fireStorage: AngularFireStorage,
@@ -56,10 +58,12 @@ export class ColaboratorModalCreateProductComponent {
   }
   async onSubmit(){
     if (this.productsForm.invalid) return;
+    this.loading = true;
     if (this.file) await this.uploadImage();
     this.colaboratorService.sendProduct(this.productsForm.value).subscribe((res: any)=>{
       this.productsForm.reset();
       this.dialogRef.close()
+      this.loading = false;
     })
   }
 }

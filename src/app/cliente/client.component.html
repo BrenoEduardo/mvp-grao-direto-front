@@ -1,5 +1,4 @@
-<div class="p-4 h-full bg-[#fdf5E6]">
-  <!-- Top Bar with User and Menu Icons -->
+<div class="p-4 h-full bg-[#F0F0F0]">
   <div class="flex justify-between items-center mb-4">
     <div>
       <mat-icon class="cursor-pointer" aria-label="menu">menu</mat-icon>
@@ -8,8 +7,6 @@
       <mat-icon [matMenuTriggerFor]="contextMenu" class="cursor-pointer"
         >person</mat-icon
       >
-
-      <!-- Menu de contexto -->
       <mat-menu #contextMenu="matMenu">
         <button mat-menu-item (click)="editarPerfil()">Editar Perfil</button>
         <button mat-menu-item (click)="sair()">Sair</button>
@@ -18,7 +15,7 @@
   </div>
 
   <div class="text-center mb-4">
-    <mat-form-field class="example-form-field">
+    <mat-form-field class="example-form-field w-full max-w-[640px]">
       <mat-label>Pesquisar</mat-label>
       <input matInput type="text" (keyup)="filterCompanies($event)" />
       <button matSuffix mat-icon-button aria-label="search">
@@ -28,36 +25,44 @@
   </div>
   <div class="text-center">
     <h2>Restaurantes</h2>
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[980px] mx-auto"
-    >
+    <div class="flex justify-center items-center pb-5">
       <div
-        *ngFor="let company of companies"
-        (click)="openDetailsCompany(company)"
+        class="grid grid-cols-sm md:grid-cols-md lg:grid-cols-lg gap-4 max-w-[980px] mx-auto"
+        *ngIf="companies.length; else notCompanies"
       >
         <div
-          class="bg-white p-4 rounded-md shadow-lg flex items-center max-w-96 min-h-[150px] cursor-pointer transition-transform transform hover:scale-105"
+          *ngFor="let company of companies"
+          (click)="openDetailsCompany(company)"
         >
-          <div class="w-1/3">
-            <img
-              [src]="company.logoCompany"
-              alt="{{ company.nameCompany }}"
-              class="w-20 h-16 object-cover mb-2"
-            />
-          </div>
-          <div class="w-2/3 text-center">
-            <p class="font-bold">
-              {{ company.nameCompany }}
-            </p>
-            <p class="">
-              {{ company.adressCompany }}
-            </p>
-            <p class="">
-              {{ company.phoneCompany }}
-            </p>
+          <div
+            class="bg-white p-4 rounded-md shadow-lg flex items-center max-w-96 min-h-[150px] cursor-pointer transition-transform transform hover:scale-105"
+          >
+            <div class="w-1/3">
+              <img
+                [src]="company.logoCompany"
+                alt="{{ company.nameCompany }}"
+                class="w-20 h-20 rounded-md object-cover mb-2"
+              />
+            </div>
+            <div class="w-2/3 text-center">
+              <p class="font-bold">
+                {{ company.nameCompany }}
+              </p>
+              <p class="">
+                {{ company.adressCompany }}
+              </p>
+              <p class="">
+                {{ company.phoneCompany }}
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <ng-template #notCompanies>
+      <h4>
+        Nenhum restaurante, produto ou descrição do produto foi encontrado
+      </h4>
+    </ng-template>
   </div>
 </div>

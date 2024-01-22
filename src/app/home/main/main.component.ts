@@ -14,12 +14,12 @@ export class MainComponent {
   ) {}
   openModalLogin(){
     this.dialog.open(ModalLoginComponent, {
-      width:'300px',
+      width:'600px',
     })
   }
   openModalRegister(){
     this.dialog.open(RegisterComponent, {
-      width:'300px',
+      width:'600px',
     })
   }
 }

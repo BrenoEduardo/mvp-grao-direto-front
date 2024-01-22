@@ -15,4 +15,7 @@ export class ColaboratorService {
   getProductsById(userId: string){
     return this.http.get(`http://localhost:3000/colaborator/getProductsBy/${userId}`)
   }
+  deleteProduct(idProduct: string){
+    return this.http.delete(`http://localhost:3000/colaborator/deleteProduct/${idProduct}`)
+  }
 }

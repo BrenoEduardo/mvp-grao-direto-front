@@ -1,5 +1,5 @@
 <div class="flex justify-end pr-2 pt-2" (click)="closedModel()">
-  <mat-icon class="opacity-50">close</mat-icon>
+  <mat-icon class="opacity-50 cursor-pointer">close</mat-icon>
 </div>
 <form
   class="example-form"
@@ -51,7 +51,7 @@
       *ngIf="loginForm.controls.typeAccount.hasError('required') && submitted"
       >Campo obrigatório</mat-error
     >
-    <div *ngIf="loginForm.value.typeAccount == 'client'">
+    <div *ngIf="loginForm.value.typeAccount == 'client'" class="w-full">
       <mat-label>Nome Completo</mat-label>
       <input
         type="text"
@@ -131,11 +131,14 @@
       </div>
     </div>
   </div>
+  <mat-error *ngIf="error" class="pt-2">Usuário já existe</mat-error>
   <div class="pt-6 w-full">
     <button
       mat-raised-button
       type="submit"
       class="!text-white pt-4 !bg-yellow-700 !w-full"
+      [class.spinner]="loading"
+      [disabled]="loading"
     >
       Registrar
     </button>

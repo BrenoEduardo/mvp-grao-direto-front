@@ -14,7 +14,9 @@ export class ModalLoginComponent {
   public loginForm: any;
   public Isregister: boolean = false;
   public submitted: boolean = false;
-  public errorLogin: boolean = false
+  public errorLogin: boolean = false;
+  public loading: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private loginService: LoginService,
@@ -24,6 +26,14 @@ export class ModalLoginComponent {
 
   ngOnInit(): void {
     this.initForm();
+    Object.keys(this.loginForm.controls).forEach((key) => {
+      this.loginForm.get(key)?.valueChanges.subscribe(() => {
+        if (this.submitted) {
+          this.errorLogin = false;
+          this.submitted = false;
+        }
+      });
+    });
   }
 
   initForm(): void {
@@ -41,6 +51,8 @@ export class ModalLoginComponent {
   onSubmit(): void {
     this.submitted = true;
     if (this.loginForm.invalid) return;
+    this.loading = true;
+
     this.loginService.login(this.loginForm.value).subscribe({
       next: (res: any) => {
         localStorage.setItem('token', res.data);
@@ -49,9 +61,11 @@ export class ModalLoginComponent {
           ? this.router.navigate(['/client'])
           : this.router.navigate(['/colaborator']);
         this.dialogRef.close();
-      },error: (error: any)=>{
-        this.errorLogin = true
-      }
+      },
+      error: (error: any) => {
+        this.errorLogin = true;
+        this.loading = false;
+      },
     });
   }
 }

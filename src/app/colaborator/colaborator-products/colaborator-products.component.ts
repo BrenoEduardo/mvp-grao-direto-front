@@ -35,9 +35,7 @@ export class ColaboratorProductsComponent {
     trigger.openMenu();
   }
 
-  editarPerfil(): void {
-    // Implemente a lógica para editar o perfil aqui
-  }
+  editarPerfil(): void {}
 
   sair(): void {
     localStorage.clear();
@@ -48,10 +46,14 @@ export class ColaboratorProductsComponent {
       this.products = res.data
     })
   }
+  deleteProduct(product: ProductsModel){
+      this.colaboratorService.deleteProduct(product._id).subscribe((res: any)=>{
+        this.getProductsById()
+      })
+  }
   openModalCreateProduct(){
     this.dialog.open(ColaboratorModalCreateProductComponent, {
-      width:'300px',
-      height: '300px'
+      width:'600px',
     }).afterClosed().subscribe((result: any)=>{
       this.getProductsById()
     })

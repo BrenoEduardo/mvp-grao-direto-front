@@ -1,8 +1,7 @@
 <form
-  class="example-form overflow-y-auto overflow-x-hidden max-h-96 p-4"
+  class="example-form overflow-y-auto overflow-x-hidden p-4 flex flex-col"
   [formGroup]="productsForm"
   (ngSubmit)="onSubmit()"
-  class="flex flex-col items-center"
 >
   <mat-label>Tipo do produto</mat-label>
   <mat-form-field>
@@ -39,6 +38,23 @@
     class="p-2 border-2 mb-3"
   />
   <mat-label>Imagem do produto</mat-label>
-  <input type="file" (change)="onFileChangeImage($event)" />
-  <button mat-raised-button type="submit">Registrar produto</button>
+  <label for="" class="custom-file-input w-full pb-6">
+    <input
+      type="file"
+      (change)="onFileChangeImage($event)"
+      accept="image/*"
+      class="w-full"
+    />
+    <span class="w-full">{{
+      file ? file.name : "Nenhum arquivo selecionado"
+    }}</span>
+  </label>
+  <button
+    mat-raised-button
+    type="submit"
+    [class.spinner]="loading"
+    [disabled]="loading"
+  >
+    Registrar produto
+  </button>
 </form>

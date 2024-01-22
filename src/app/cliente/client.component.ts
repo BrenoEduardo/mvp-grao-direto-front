@@ -20,7 +20,7 @@ export class ClientComponent {
   ngOnInit(): void {
     this.getAllCompanys();
     this.searchTerms.pipe(
-      debounceTime(1000), // aguarde 3000ms (3 segundos) após a última tecla pressionada
+      debounceTime(1000),
       switchMap((term: any) => this.ClienteService.filterCompanies(term))
     ).subscribe((res: any) => {
       this.companies = res.data;
