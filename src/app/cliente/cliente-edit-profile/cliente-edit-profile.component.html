@@ -1,7 +1,10 @@
 <div class="flex justify-end pr-2 pt-2" (click)="closedModel()">
   <mat-icon class="opacity-50 cursor-pointer">close</mat-icon>
 </div>
-<div class="flex flex-col w-full p-4">
+<div class="flex justify-center">
+  <span class="font-bold text-lg">Editar perfil</span>
+</div>
+<div class="flex flex-col w-full pb-4 px-4">
   <form
     class="example-form"
     [formGroup]="userForm"
@@ -34,7 +37,7 @@
       <button
         mat-raised-button
         type="submit"
-        class="!text-white !bg-yellow-700 p-3 w-full rounded  max-w-[350px]  text-center"
+        class="!text-white !bg-yellow-700 p-3 w-full rounded max-w-[350px] text-center"
       >
         Editar
       </button>

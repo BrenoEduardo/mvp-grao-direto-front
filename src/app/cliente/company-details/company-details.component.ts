@@ -13,7 +13,7 @@ export class CompanyDetailsComponent {
   public company!: UserModel;
   public productDrink: ProductsModel[] = [];
   public productFood: ProductsModel[] = [];
-
+  public loading: boolean = true
   constructor(
     private router: ActivatedRoute,
     private colaboratorService: ColaboratorService
@@ -30,6 +30,7 @@ export class CompanyDetailsComponent {
     this.colaboratorService
       .getProductsById(this.company._id)
       .subscribe((res: any) => {
+        this.loading = false
         res.data.forEach((product: ProductsModel)=>{
           product.productType == 'Bebida' ? this.productDrink.push(product) : this.productFood.push(product)
         })
