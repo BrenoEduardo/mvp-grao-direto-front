@@ -7,17 +7,18 @@ import { CompanyDetailsComponent } from './company-details/company-details.compo
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import { ClienteShowProductsComponent } from './cliente-show-products/cliente-show-products.component';
+import { ScrollableDirective } from '../../core/directives/scrol.directive';
 
 
 
 @NgModule({
-  declarations: [ClientComponent, CompanyDetailsComponent, ClienteShowProductsComponent],
+  declarations: [ClientComponent, CompanyDetailsComponent, ClienteShowProductsComponent, ScrollableDirective],
   imports: [
     CommonModule,
     MatInputModule,
     MatIconModule,
     MatMenuModule,
-    RouterLink
+    RouterLink,
   ]
 })
 export class ClientModule { }

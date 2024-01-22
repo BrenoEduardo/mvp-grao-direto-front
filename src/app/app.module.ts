@@ -13,7 +13,6 @@ import { NgxMaskModule } from 'ngx-mask';
 import {AngularFireModule} from '@angular/fire/compat'
 import {AngularFireStorageModule} from '@angular/fire/compat/storage'
 import { enviroment } from 'src/enviroments/enviroment';
-import { ColaboratorComponent } from './colaborator/colaborator.component';
 import { TokenInterceptor } from 'src/core/interceptors/token.interceptor';
 import { ColaboratorModule } from './colaborator/colaborator.module';
 import { ClientModule } from './cliente/client.module';

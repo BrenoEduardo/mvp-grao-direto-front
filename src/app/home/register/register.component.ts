@@ -113,8 +113,6 @@ export class RegisterComponent {
   }
   async onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm);
-    console.log(this.loginForm, 'dsa');
 
     if (this.loginForm.invalid) return;
 

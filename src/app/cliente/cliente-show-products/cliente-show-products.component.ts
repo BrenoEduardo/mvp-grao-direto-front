@@ -10,4 +10,5 @@ export class ClienteShowProductsComponent {
 
   @Input() products!: ProductsModel[];
   @Input() title!: String;
+
 }

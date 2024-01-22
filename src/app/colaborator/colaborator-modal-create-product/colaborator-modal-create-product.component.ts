@@ -56,7 +56,7 @@ export class ColaboratorModalCreateProductComponent {
   }
   async onSubmit(){
     if (this.productsForm.invalid) return;
-    await this.uploadImage();
+    if (this.file) await this.uploadImage();
     this.colaboratorService.sendProduct(this.productsForm.value).subscribe((res: any)=>{
       this.productsForm.reset();
       this.dialogRef.close()

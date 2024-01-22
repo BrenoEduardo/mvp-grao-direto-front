@@ -3,8 +3,6 @@
     <mat-icon class="mat-18">chevron_left</mat-icon>
   </a>
 </div>
-
-<!-- Seção da empresa -->
 <div class="bg-gray-800 text-white p-8 mb-8">
   <img
     [src]="company.logoCompany"
@@ -14,6 +12,14 @@
 
   <div class="text-2xl font-bold text-center mb-4">
     {{ company.nameCompany }}
+  </div>
+</div>
+<div class="flex flex-col">
+  <div class="text-sm font-bold text-center mb-4">
+    Endereço: {{ company.adressCompany }}
+  </div>
+  <div class="text-sm font-bold text-center mb-4">
+    Telefone para contato:{{ company.phoneCompany }}
   </div>
 </div>
 <app-cliente-show-products [products]="productDrink" title="Bebida"></app-cliente-show-products>

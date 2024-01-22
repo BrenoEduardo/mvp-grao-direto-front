@@ -1,5 +1,5 @@
 <form
-  class="example-form"
+  class="example-form overflow-y-auto overflow-x-hidden max-h-96 p-4"
   [formGroup]="productsForm"
   (ngSubmit)="onSubmit()"
   class="flex flex-col items-center"
@@ -30,7 +30,7 @@
     thousandSeparator="."
     decimalSeparator=","
   />
-  <mat-label>Descrição do  produto</mat-label>
+  <mat-label>Descrição do produto</mat-label>
   <input
     type="text"
     matInput

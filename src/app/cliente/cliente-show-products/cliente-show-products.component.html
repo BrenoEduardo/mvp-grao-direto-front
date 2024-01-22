@@ -1,28 +1,30 @@
-<div class="p-4">
+<div class="p-4 mx-auto scroll-container" scrollable>
   <h2>{{ title }}</h2>
-  <div class="flex overflow-x-auto scrollbar-hide">
-    <div *ngFor="let product of products" class="flex-shrink-0 w-64 mx-4">
-      <div class="bg-white p-6 rounded-lg shadow-md">
+  <div class="flex pt-3" *ngIf="products.length; else notProduct">
+    <div *ngFor="let product of products" class="flex-shrink-0 w-64 mr-8">
+      <div class="bg-white rounded-lg shadow-md">
         <img
-          [src]="product.productImage"
-          alt="{{ product.productName }}"
+        [src]="product.productImage ? product.productImage : '../../../assets/default-image.jpg'"
+        alt="{{ product.productName }}"
           class="w-full h-32 object-cover mb-4 rounded-md"
         />
-        <!-- <div class="text-gray-700 font-bold mb-2">
-        {{ product.productType }}
-      </div> -->
-        <div class="text-xl mb-2">
-          {{ product.productName }}
-        </div>
-        <div class="flex items-center justify-between">
-          <div class="text-gray-600">
-            {{ product.productPrice | currency : "BRL" }}
+        <div class="px-4 pb-4">
+          <div class="text-xl mb-2">
+            {{ product.productName }}
           </div>
-          <div class="text-gray-600">
+          <div class="line-clamp-3 h-16 text-gray-600 overflow-hidden">
             {{ product.productDescription }}
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="text-gray-600 text-lg font-bold">
+              {{ product.productPrice | currency : "BRL" }}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <ng-template #notProduct>
+    <h4>Esse usuário ainda não tem {{title}} cadastrados</h4>
+  </ng-template>
 </div>

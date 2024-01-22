@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
-  declarations: [HomeComponent, NavbarComponent, MainComponent, ModalLoginComponent, RegisterComponent],
+  declarations: [HomeComponent, MainComponent, ModalLoginComponent, RegisterComponent],
   imports: [
     CommonModule,
     MatSidenavModule,
@@ -31,7 +30,6 @@ import { TextMaskModule } from 'angular2-text-mask';
   ],
   exports:[
     HomeComponent,
-    NavbarComponent,
   ]
 })
 export class HomeModule { }

@@ -1,5 +1,5 @@
 import { CompanyModel } from 'src/core/interface/companies.model';
-import { ClienteService } from './../../core/service/cliente.service';
+import { ClienteService } from '../../core/service/cliente/cliente.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
