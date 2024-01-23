@@ -5,7 +5,7 @@ Projeto para mostrar minhas habilidades em node e Angular
 ## Demonstração
 
 Acesse a [demo ao vivo](https://mvp-grao-direto-front.vercel.app) para experimentar o projeto.
-Caso não der certo, tente esse [link](mvp-grao-direto-front-git-master-brenoeduardo.vercel.app)
+Caso não der certo, tente esse [link](https://mvp-grao-direto-front-git-master-brenoeduardo.vercel.app)
 
 ## Visão Geral
 
