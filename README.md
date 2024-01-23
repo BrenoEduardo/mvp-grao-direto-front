@@ -15,6 +15,10 @@ como contribuidos ou cliente, fazer uploads de imagem, editar perfil, visualizar
 
 Os dados utilizados no projeto podem ser encontrados [aqui](https://github.com/BrenoEduardo/dados-restaurante-e-user).
 
+## Back-end
+
+O repositório do back end por ser encontrado [aqui](https://github.com/BrenoEduardo/mvp-grao-direto-back). Lá tem outra informações no readme.MD sobre a integração
+
 ## Como Rodar
 
 Para executar o projeto localmente, siga os passos abaixo:
