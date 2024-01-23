@@ -1,27 +1,32 @@
-# GraoDiretoFront
+# Nome do Projeto
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
+Descrição concisa do projeto, destacando as principais funcionalidades e propósito.
 
-## Development server
+## Demonstração
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Acesse a [demo ao vivo](https://mvp-grao-direto-front.vercel.app) para experimentar o projeto.
 
-## Code scaffolding
+## Visão Geral
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este projeto foi desenvolvido com o intuito de demonstrar minhas habilidades em Angular, Node.js e MongoDB. Ele consiste em um mvp de restaurantes, onde e possível criar uma conta
+como contribuidos ou cliente, fazer uploads de imagem, editar perfil, visualizar restaurantes e produtos, e filtrar restaurantes com base no nome, nome do produto ou descrição do produto.
 
-## Build
+## Dados do Banco
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Os dados utilizados no projeto podem ser encontrados [aqui](https://github.com/BrenoEduardo/dados-restaurante-e-user).
 
-## Running unit tests
+## Como Rodar
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para executar o projeto localmente, siga os passos abaixo:
 
-## Running end-to-end tests
+1. Clone o repositório para sua máquina local.
+   git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. Instale as dependências
+    npm install
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+3. Execute o projeto localmente.
+   npm run start
+   
+4. Para rodar em modo de produção, utilize o seguinte comando:
+  npm run star:prod
