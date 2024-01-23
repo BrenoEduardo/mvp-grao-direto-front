@@ -20,7 +20,7 @@ Os dados utilizados no projeto podem ser encontrados [aqui](https://github.com/B
 Para executar o projeto localmente, siga os passos abaixo:
 
 1. Clone o repositório para sua máquina local.
-   git clone https://github.com/SEU-USUARIO/SEU-REPOSITORIO.git
+   git clone https://github.com/BrenoEduardo/mvp-grao-direto-front.git
 
 2. Instale as dependências
     npm install
