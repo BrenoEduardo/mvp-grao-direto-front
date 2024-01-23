@@ -18,6 +18,7 @@ Os dados utilizados no projeto podem ser encontrados [aqui](https://github.com/B
 ## Como Rodar
 
 Para executar o projeto localmente, siga os passos abaixo:
+
 1. Clone o repositório para sua máquina local:
 
     ```bash
