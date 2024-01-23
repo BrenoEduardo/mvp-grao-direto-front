@@ -1,6 +1,6 @@
-# Nome do Projeto
+# Mvp-grao-direto-front
 
-Descrição concisa do projeto, destacando as principais funcionalidades e propósito.
+Projeto para mostrar minhas habilidades em node e Angular
 
 ## Demonstração
 
