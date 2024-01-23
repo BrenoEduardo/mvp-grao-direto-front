@@ -18,15 +18,31 @@ Os dados utilizados no projeto podem ser encontrados [aqui](https://github.com/B
 ## Como Rodar
 
 Para executar o projeto localmente, siga os passos abaixo:
+1. Clone o repositório para sua máquina local:
 
-1. Clone o repositório para sua máquina local.
-   git clone https://github.com/BrenoEduardo/mvp-grao-direto-front.git
+    ```bash
+    git clone https://github.com/BrenoEduardo/mvp-grao-direto-front.git
+    ```
 
-2. Instale as dependências
+2. Navegue até o diretório do projeto:
+
+    ```bash
+    cd mvp-grao-direto-front
+    ```
+
+3. Instale as dependências:
+
+    ```bash
     npm install
+    ```
 
-3. Execute o projeto localmente.
-   npm run start
-   
-4. Para rodar em modo de produção, utilize o seguinte comando:
-  npm run star:prod
+4. Execute o projeto localmente.:
+
+    ```bash
+    npm run start
+    ```
+5. Execute o projeto apontando para prod.:
+
+    ```bash
+    npm run star:prod
+    ```
